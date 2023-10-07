@@ -37,6 +37,7 @@ def config(filename='database.ini', section='mysql'):
 @st.cache_resource
 def dbconnection():
     params = config()
+    params.append("phonepe")
     try:
         return create_engine(url="mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}".format(*params))
     except Error as e:
